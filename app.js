@@ -204,7 +204,7 @@ function go(i){
   const renderer = RENDER[s.type] || RENDER.custom;
   const bodyHTML = renderer(s.data, s);
 
-  // Pill text: usa localStorage ou fallback
+  // Pill text
   const pillText = localStorage.getItem('dash_pill') || 'UPA Rocinha';
 
   sl.innerHTML = `
@@ -306,7 +306,6 @@ document.addEventListener('keydown', e=>{
       if(document.body.classList.contains('fullscreen')){
         toggleFullscreen();
       }
-      // admin.js cuida do fechamento do seu próprio painel
       e.preventDefault();
       break;
     case 'f': case 'F':
@@ -328,82 +327,16 @@ function toggleFullscreen(){
 }
 
 // ══════════════════════════════════════
-// ADMIN PANEL (legado — imagens e textos da sidebar)
-// Funciona com o HTML do painel lateral se existir.
-// O novo admin.js cuida da edição dos indicadores.
+// RESTORE SAVED SIDEBAR TEXTS
 // ══════════════════════════════════════
 
-function toggleAdmin(){
-  const panel = document.getElementById('admin-panel');
-  const overlay = document.getElementById('admin-overlay');
-  if(panel) panel.classList.toggle('open');
-  if(overlay) overlay.classList.toggle('show');
-}
-
-function handleImg(input, prevId, key){
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e=>{
-    IMG[key] = e.target.result;
-    const prev = document.getElementById(prevId);
-    if(prev){
-      prev.src = e.target.result;
-      prev.style.display = 'block';
-    }
-  };
-  reader.readAsDataURL(file);
-}
-
-function saveAdmin(){
-  ['logo','bg1','bg2'].forEach(k=>{
-    if(IMG[k]) localStorage.setItem('dash_img_'+k, IMG[k]);
-  });
-
-  const eyebrowEl = document.getElementById('adm-eyebrow');
-  const titleEl = document.getElementById('adm-title');
-  const pillEl = document.getElementById('adm-pill');
-
-  if(eyebrowEl){
-    const ey = eyebrowEl.value;
-    const sideEy = document.getElementById('side-eyebrow');
-    if(sideEy) sideEy.textContent = ey;
-    localStorage.setItem('dash_eyebrow', ey);
-  }
-  if(titleEl){
-    const ti = titleEl.value;
-    const sideTi = document.getElementById('side-title');
-    if(sideTi) sideTi.textContent = ti;
-    localStorage.setItem('dash_title', ti);
-  }
-  if(pillEl){
-    localStorage.setItem('dash_pill', pillEl.value);
-  }
-
-  go(cur);
-
-  const toast = document.getElementById('admin-toast');
-  if(toast){
-    toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'), 2000);
-  }
-}
-
-// Restore saved text on load
 (function restoreTexts(){
   const ey = localStorage.getItem('dash_eyebrow');
   const ti = localStorage.getItem('dash_title');
-  const pi = localStorage.getItem('dash_pill');
 
-  const eyEl = document.getElementById('adm-eyebrow');
-  const tiEl = document.getElementById('adm-title');
-  const piEl = document.getElementById('adm-pill');
   const sideEy = document.getElementById('side-eyebrow');
   const sideTi = document.getElementById('side-title');
 
-  if(ey && eyEl) eyEl.value = ey;
-  if(ti && tiEl) tiEl.value = ti;
   if(ey && sideEy) sideEy.textContent = ey;
   if(ti && sideTi) sideTi.textContent = ti;
-  if(pi && piEl) piEl.value = pi;
 })();
