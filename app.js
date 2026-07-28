@@ -14,8 +14,17 @@ const IMG = { logo:null, bg1:null, bg2:null };
 
 // ── Fetch slides data ──
 fetch('slides.json')
-  .then(r=>r.json())
-  .then(data=>{
+  .then(r => r.json())
+  .then(data => {
+    // NOVO: guarda original pra referência do admin
+    window.__originalSlides = JSON.parse(JSON.stringify(data));
+
+    // NOVO: usa versão customizada se existir
+    const customData = localStorage.getItem('accountability_slides_custom');
+    if(customData){
+      try{ data = JSON.parse(customData); }catch(e){}
+    }
+     
     SLIDES = data;
     buildNav();
     go(0);
