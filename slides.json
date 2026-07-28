@@ -192,7 +192,7 @@
       ]
     }
   },
-    {
+  {
     "group":"Gestão",
     "title":"Manutenção",
     "eyebrow":"Infraestrutura",
@@ -204,88 +204,124 @@
         {"label":"OS Abertas","value":"14","sub":"5 pendentes > 15d","status":"red"},
         {"label":"OS Concluídas","value":"38","sub":"73% no prazo","status":"green"},
         {"label":"Equip. Parados","value":"2","sub":"1 Raio-X portátil","status":"red"},
-        {"label":"Preventivas","value":"12/12","sub":"100% ✓","status":"green"}
+        {"label":"Preventivas","value":"91%","sub":"Meta: ≥ 85% ✓","status":"green"}
       ],
       "columns":2,
       "cards":[
-        {"title":"Pendências Críticas","items":["Raio-X portátil — aguardando peça (previsão: 10/06)","Ar-condicionado Sala Amarela — compressor em manutenção"]},
-        {"title":"Investimentos Previstos","items":["Monitor multiparamétrico x2 — licitação em andamento","Desfibrilador (backup) — entrega jul/2026"]}
+        {"title":"Pendências Críticas","items":["Raio-X portátil — aguardando peça (previsão 10/06)","Ar-condicionado Sala Vermelha — manutenção emergencial realizada 22/05","Maca elétrica 03 — laudo de descarte em andamento"]},
+        {"title":"Realizações","items":["Preventiva em 12 ventiladores — concluída","Calibração de monitores multiparamétricos — 100%","Troca de filtros HEPA — completa"]}
       ]
     }
   },
   {
-    "group":"Resultados",
-    "title":"Ouvidoria & NPS",
+    "group":"Indicadores",
+    "title":"Satisfação do Usuário",
     "eyebrow":"Ouvidoria",
-    "heading":"Ouvidoria & Pesquisa de Satisfação",
+    "heading":"Pesquisa de Satisfação & Ouvidoria",
     "type":"kpis+cards",
-    "source":"Fonte: Ouvidoria · Mai/2026",
+    "source":"Fonte: Ouvidoria/NPS · Mai/2026",
     "data":{
       "kpis":[
-        {"label":"NPS Geral","value":"72","sub":"Zona de Qualidade","status":"green"},
-        {"label":"Manifestações","value":"84","sub":"47 elogios · 22 reclamações · 15 sugestões","status":"muted"},
-        {"label":"Tempo Resp. Médio","value":"3,2 dias","sub":"Meta: ≤ 5d ✓","status":"green"}
+        {"label":"NPS Geral","value":"72","sub":"Meta: ≥ 70 ✓","status":"green"},
+        {"label":"Manifestações","value":"48","sub":"32 elogios · 16 queixas","status":"muted"},
+        {"label":"Tempo Resp. Ouvidoria","value":"3,2 dias","sub":"Meta: ≤ 5 dias ✓","status":"green"},
+        {"label":"Resolutividade","value":"94%","sub":"Meta: ≥ 90% ✓","status":"green"}
       ],
       "columns":2,
       "cards":[
-        {"title":"Top Elogios","items":["Equipe de enfermagem — acolhimento humanizado","Rapidez no atendimento pediátrico","Limpeza e organização"]},
-        {"title":"Top Reclamações","items":["Tempo de espera na Sala Verde (pico noturno)","Falta de informação sobre tempo estimado","Climatização inadequada (Sala Amarela)"]}
+        {"title":"Principais Elogios","items":["Agilidade no atendimento pediátrico","Humanização da equipe de enfermagem","Limpeza e organização da unidade"]},
+        {"title":"Principais Queixas","items":["Tempo de espera na madrugada","Falta de informação sobre resultado de exames","Cadeiras insuficientes na sala de espera"]}
       ]
     }
   },
   {
-    "group":"Resultados",
-    "title":"Plano de Ação",
-    "eyebrow":"Plano de Ação",
-    "heading":"Plano de Ação — Desvios Identificados",
+    "group":"Plano de Ação",
+    "title":"Riscos & Problemas",
+    "eyebrow":"Gestão de Riscos",
+    "heading":"Mapa de Riscos & Problemas Identificados",
     "type":"table",
-    "source":"Fonte: Reunião Gerencial · Mai/2026",
+    "source":"Fonte: Comitê de Gestão · Mai/2026",
     "data":{
-      "headers":["Problema","Ação","Responsável","Prazo","Status"],
+      "headers":["#","Risco / Problema","Impacto","Probabilidade","Ação Mitigatória","Responsável"],
       "numCols":[],
       "rows":[
-        ["Permanência > 6h","Protocolo fast-track verde/azul","Dra. Ana Costa","Jul/26","Em andamento"],
-        ["Evasão 4,8%","Painel tempo de espera + comunicação ativa","Paula Reis","Jun/26","Iniciado"],
-        ["Absenteísmo 6,2%","Programa de qualidade de vida + escala flexível","Lúcia Ramos","Ago/26","Planejado"],
-        ["Horas extras +12%","Revisão de dimensionamento noturno","Lúcia Ramos","Jul/26","Em andamento"],
-        ["Sala Vermelha 96,8%","Treinamento + reclassificação de fluxo","Dra. Ana Costa","Jun/26","Concluído"],
-        ["Climatização","Reparo compressor + contrato preventivo","João Ferreira","Jun/26","Em andamento"]
-      ],
-      "statusCol":4
+        ["1","Permanência média > 6h","Alto","Alta","Protocolo fast-track para verde/azul","Coord. Acolhimento"],
+        ["2","Evasão 4,8%","Alto","Média","Painel de chamada + comunicação ativa","Dir. Enfermagem"],
+        ["3","Absenteísmo 6,2%","Médio","Alta","Programa de qualidade de vida + escala flexível","Coord. RH"],
+        ["4","Raio-X portátil parado","Alto","Baixa","Aquisição emergencial via ARP","Dir. Administrativo"],
+        ["5","Horas extras crescentes","Médio","Alta","Redimensionamento de escala noturna","Dir. Enfermagem"]
+      ]
     }
   },
   {
-    "group":"Resultados",
-    "title":"Metas Contratuais",
-    "eyebrow":"Contrato",
-    "heading":"Acompanhamento de Metas Contratuais",
+    "group":"Plano de Ação",
+    "title":"Metas Junho/2026",
+    "eyebrow":"Metas",
+    "heading":"Metas & Compromissos — Junho/2026",
     "type":"table",
-    "source":"Fonte: Contrato de Gestão 2026",
+    "source":"",
     "data":{
-      "headers":["Meta","Indicador","Alvo","Realizado","Ating.","Status"],
-      "numCols":[3,4],
+      "headers":["#","Meta","Indicador","Alvo","Responsável","Prazo"],
+      "numCols":[],
       "rows":[
-        ["Produção mínima","Atendimentos/mês","≥ 7.800","8.247","105,7%","✓"],
-        ["Classificação de risco","% classificados","≥ 95%","97,3%","102,4%","✓"],
-        ["Tempo porta-médico","Minutos","≤ 30","18","Meta ✓","✓"],
-        ["Satisfação","NPS","≥ 70","72","102,9%","✓"],
-        ["Permanência","Horas","≤ 6","6,4","93,8%","✗"],
-        ["Evasão","% evasão","≤ 3%","4,8%","62,5%","✗"]
+        ["1","Reduzir permanência média","Horas de permanência","≤ 6h","Coord. Acolhimento","30/06"],
+        ["2","Reduzir evasão","Taxa de evasão","≤ 3%","Dir. Enfermagem","30/06"],
+        ["3","Reduzir absenteísmo","% absenteísmo","≤ 4%","Coord. RH","30/06"],
+        ["4","Restabelecer Raio-X portátil","Equipamento operante","100%","Dir. Administrativo","15/06"],
+        ["5","Ampliar adesão protocolo de dor","% adesão auditada","≥ 92%","Coord. Qualidade","30/06"],
+        ["6","Implantar fast-track verde/azul","Protocolo ativo","Sim/Não","Dir. Médico","20/06"]
+      ]
+    }
+  },
+  {
+    "group":"Plano de Ação",
+    "title":"Cronograma",
+    "eyebrow":"Timeline",
+    "heading":"Cronograma de Ações — Junho/2026",
+    "type":"table",
+    "source":"",
+    "data":{
+      "headers":["Ação","S1 (02-06)","S2 (09-13)","S3 (16-20)","S4 (23-27)","Status"],
+      "numCols":[],
+      "rows":[
+        ["Protocolo fast-track","Desenho","Piloto","Ajustes","Go-live","—"],
+        ["Painel de chamada (evasão)","Instalação","Testes","Operação","Operação","—"],
+        ["Programa qualidade vida RH","Planejamento","Lançamento","Adesão","Avaliação","—"],
+        ["Raio-X portátil","Peça chega","Instalação","Calibração","Operação","—"],
+        ["Auditoria protocolo de dor","—","Coleta","Coleta","Relatório","—"],
+        ["Treinamento equipe fast-track","Conteúdo","Turma 1","Turma 2","Avaliação","—"]
       ],
       "statusCol":5
     }
   },
   {
-    "group":"Resultados",
+    "group":"Encerramento",
+    "title":"Resumo Executivo",
+    "eyebrow":"Síntese",
+    "heading":"Resumo Executivo — Mai/2026",
+    "type":"cards",
+    "source":"",
+    "data":{
+      "columns":2,
+      "cards":[
+        {"title":"✅ Destaques Positivos","items":["6 de 8 KPIs assistenciais dentro da meta","Produção 104,7% da meta global","Saldo financeiro positivo (R$ 312k)","Zero ruptura crítica em farmácia","NPS 72 — acima da meta"]},
+        {"title":"⚠️ Pontos de Atenção","items":["Permanência média 6,4h (meta 6h)","Evasão 4,8% (meta 3%)","Absenteísmo 6,2% (meta 4%)","1 Raio-X portátil parado","Horas extras +12% vs mês anterior"]},
+        {"title":"🎯 Foco Junho","items":["Protocolo fast-track verde/azul","Painel de chamada anti-evasão","Programa qualidade de vida RH","Restabelecer Raio-X até 15/06"]},
+        {"title":"📊 Números-Chave","items":["8.247 atendimentos","18 min porta-médico","R$ 2,4M receita","189 colaboradores ativos","3 eventos adversos"]}
+      ]
+    }
+  },
+  {
+    "group":"Encerramento",
     "title":"Encerramento",
-    "eyebrow":"Encerramento",
-    "heading":"Encerramento",
+    "eyebrow":"Accountability Mensal · 2026",
+    "heading":"Obrigado",
     "type":"cover",
     "source":"",
     "data":{
-      "line1":"Obrigado!",
-      "line2":"Accountability — UPA Rocinha",
-      "line3":"Dúvidas, sugestões e deliberações"
+      "line1":"Accountability Mai/2026",
+      "line2":"UPA Rocinha",
+      "line3":"Próxima reunião: Junho/2026 · Boa gestão a todos!"
     }
   }
 ]
