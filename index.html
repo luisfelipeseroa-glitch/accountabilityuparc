@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accountability 2026 — UPA Rocinha</title>
+<meta name="description" content="Dashboard de Accountability Mensal — UPA Rocinha 2026">
+<meta property="og:title" content="Accountability 2026 — UPA Rocinha">
+<meta property="og:description" content="Resultados, Metas e Plano de Ação">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ADMIN -->
+<div id="admin-overlay" onclick="toggleAdmin()"></div>
+<button id="admin-toggle" onclick="toggleAdmin()" title="Gerenciamento">⚙</button>
+<div id="admin-toast">✓ Salvo com sucesso!</div>
+
+<div id="admin-panel">
+  <h2>⚙ Painel de Gerenciamento <button class="close-adm" onclick="toggleAdmin()">✕</button></h2>
+
+  <h3>🖼️ Imagens</h3>
+  <div class="adm-section">
+    <label>Logo (topo da sidebar)</label>
+    <input type="file" id="adm-logo" accept="image/*" onchange="handleImg(this,'prev-logo','logo')">
+    <img id="prev-logo" class="adm-preview">
+
+    <label>Fundo 1 (slides ímpares)</label>
+    <input type="file" id="adm-bg1" accept="image/*" onchange="handleImg(this,'prev-bg1','bg1')">
+    <img id="prev-bg1" class="adm-preview">
+
+    <label>Fundo 2 (slides pares)</label>
+    <input type="file" id="adm-bg2" accept="image/*" onchange="handleImg(this,'prev-bg2','bg2')">
+    <img id="prev-bg2" class="adm-preview">
+  </div>
+
+  <h3>📝 Textos Globais</h3>
+  <div class="adm-section">
+    <label>Eyebrow (sidebar)</label>
+    <input type="text" id="adm-eyebrow" value="Accountability Mensal · 2026">
+    <label>Título principal</label>
+    <input type="text" id="adm-title" value="UPA Rocinha">
+    <label>Brand pill (canto do slide)</label>
+    <input type="text" id="adm-pill" value="UPA Rocinha">
+  </div>
+
+  <button class="adm-btn" onclick="saveAdmin()">💾 Salvar Alterações</button>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="side-logo" id="logo-area">
+    <span class="logo-ph">LOGO</span>
+  </div>
+  <div class="side-head">
+    <div class="eyebrow" id="side-eyebrow">Accountability Mensal · 2026</div>
+    <h1 id="side-title">UPA Rocinha</h1>
+  </div>
+  <div class="side-progress">
+    Progresso da apresentação
+    <div class="bar"><div id="pbar"></div></div>
+  </div>
+  <div class="nav-groups" id="nav"></div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <div id="topbar">
+    <div class="crumb" id="crumb">Carregando…</div>
+    <div class="nav-btns">
+      <button onclick="prev()" id="btnP">‹ Anterior</button>
+      <span class="slide-counter" id="slide-counter">— / —</span>
+      <button onclick="next()" id="btnN">Próximo ›</button>
+      <button class="btn-fullscreen" id="btnFS" onclick="toggleFullscreen()">⛶ Apresentar</button>
+    </div>
+  </div>
+  <div id="stage-wrap">
+    <div class="slide" id="slide"></div>
+  </div>
+</div>
+
+<!-- Keyboard hint -->
+<div class="kb-hint">← → navegar · F fullscreen · Esc sair</div>
+
+<script src="app.js"></script>
+</body>
+</html>
