@@ -56,7 +56,6 @@ function openAdminPanel(){
     boxShadow:'0 8px 40px rgba(0,0,0,0.6)', position:'relative'
   });
 
-  // Header
   panel.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
       <h2 style="margin:0;font-size:20px;color:#C9A46A;">⚙️ Painel Admin — Editar Indicadores</h2>
@@ -92,7 +91,6 @@ function closeAdmin(){
 /* ── Carrega slides no painel ── */
 function loadSlidesIntoAdmin(){
   const container = document.getElementById('admin-slides-list');
-  // Pega custom ou original
   const slides = getCustomSlides() || window.__originalSlides || [];
   if(!slides.length){
     container.innerHTML='<p style="color:#D96C6C;">Nenhum slide encontrado. Verifique se o site carregou corretamente.</p>';
@@ -101,7 +99,7 @@ function loadSlidesIntoAdmin(){
 
   let html = '';
   slides.forEach((slide,si)=>{
-    html += `<div class="adm-slide" style="background:#1a2332;border-radius:8px;padding:16px;margin-bottom:16px;border-left:3px solid #C9A46A;">`;
+    html += `<div style="background:#1a2332;border-radius:8px;padding:16px;margin-bottom:16px;border-left:3px solid #C9A46A;">`;
     html += `<h3 style="margin:0 0 12px;font-size:14px;color:#C9A46A;">${slide.group} → ${slide.title}</h3>`;
 
     // Heading editável
@@ -112,19 +110,18 @@ function loadSlidesIntoAdmin(){
     if(kpis.length){
       html += `<div style="font-size:11px;color:#93A0BD;margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.1em;">KPIs</div>`;
       kpis.forEach((kpi,ki)=>{
-        const prefix = `s${si}_k${ki}`;
+        const pre = `s${si}_k${ki}`;
         html += `<div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;margin-bottom:6px;">`;
-        html += smallInput(prefix+'_label', 'Label', kpi.label);
-        html += smallInput(prefix+'_value', 'Valor', kpi.value);
-        html += smallInput(prefix+'_sub', 'Sub', kpi.sub);
-        html += smallSelect(prefix+'_status', kpi.status);
+        html += smallInput(pre+'_label', 'Label', kpi.label);
+        html += smallInput(pre+'_value', 'Valor', kpi.value);
+        html += smallInput(pre+'_sub', 'Sub', kpi.sub);
+        html += smallSelect(pre+'_status', kpi.status);
         html += `</div>`;
       });
     }
 
-    // Tabela rows
-    const tRows = (slide.type==='table'||slide.type==='kpis+table') && slide.data?.rows && slide.data?.headers;
-    if(tRows){
+    // Tabela
+    if((slide.type==='table'||slide.type==='kpis+table') && slide.data?.rows && slide.data?.headers){
       html += `<div style="font-size:11px;color:#93A0BD;margin:12px 0 4px;text-transform:uppercase;letter-spacing:0.1em;">Tabela</div>`;
       html += `<div style="overflow-x:auto;"><table style="width:100%;font-size:11px;border-collapse:collapse;">`;
       html += `<tr>${slide.data.headers.map(h=>`<th style="text-align:left;padding:4px 6px;color:#C9A46A;border-bottom:1px solid #2a3a52;">${h}</th>`).join('')}</tr>`;
@@ -135,15 +132,14 @@ function loadSlidesIntoAdmin(){
     }
 
     // Cards
-    const cards = slide.data?.cards;
-    if(cards && cards.length){
+    if(slide.data?.cards && slide.data.cards.length){
       html += `<div style="font-size:11px;color:#93A0BD;margin:12px 0 4px;text-transform:uppercase;letter-spacing:0.1em;">Cards</div>`;
-      cards.forEach((card,ci)=>{
-        const prefix = `s${si}_card${ci}`;
+      slide.data.cards.forEach((card,ci)=>{
+        const pre = `s${si}_card${ci}`;
         html += `<div style="background:#111827;border-radius:6px;padding:8px;margin-bottom:6px;">`;
-        html += smallInput(prefix+'_title','Título card',card.title);
+        html += smallInput(pre+'_title','Título card',card.title);
         card.items.forEach((item,ii)=>{
-          html += smallInput(prefix+'_item'+ii,'Item '+(ii+1),item);
+          html += smallInput(pre+'_item'+ii,'Item '+(ii+1),item);
         });
         html += `</div>`;
       });
@@ -179,14 +175,13 @@ function saveFromAdmin(){
       if(l3!==null) slide.data.line3=l3;
     }
 
-    // KPIs
-    const kpis = slide.data?.kpis || (slide.data?.rows && slide.type==='kpis' ? null : []);
+    // KPIs (formato rows flat — type: kpis)
     if(slide.type==='kpis' && slide.data?.rows){
       let ki=0;
       slide.data.rows.forEach(row=>{
         row.forEach(kpi=>{
           const pre=`s${si}_k${ki}`;
-          const lb=getVal(pre+'_label'),vl=getVal(pre+'_value'),sb=getVal(pre+'_sub'),st=getVal(pre+'_status');
+          const lb=getVal(pre+'_label'), vl=getVal(pre+'_value'), sb=getVal(pre+'_sub'), st=getVal(pre+'_status');
           if(lb!==null) kpi.label=lb;
           if(vl!==null) kpi.value=vl;
           if(sb!==null) kpi.sub=sb;
@@ -194,10 +189,12 @@ function saveFromAdmin(){
           ki++;
         });
       });
-    } else if(slide.data?.kpis){
+    }
+    // KPIs (formato kpis array — type: kpis+table, kpis+cards)
+    else if(slide.data?.kpis){
       slide.data.kpis.forEach((kpi,ki)=>{
         const pre=`s${si}_k${ki}`;
-        const lb=getVal(pre+'_label'),vl=getVal(pre+'_value'),sb=getVal(pre+'_sub'),st=getVal(pre+'_status');
+        const lb=getVal(pre+'_label'), vl=getVal(pre+'_value'), sb=getVal(pre+'_sub'), st=getVal(pre+'_status');
         if(lb!==null) kpi.label=lb;
         if(vl!==null) kpi.value=vl;
         if(sb!==null) kpi.sub=sb;
@@ -231,105 +228,6 @@ function saveFromAdmin(){
 
   saveCustomSlides(slides);
   closeAdmin();
-  location.reload();
-}
-
-/* ── Reset ── */
-function resetAdmin(){
-  if(!confirm('Tem certeza? Isso apaga todas as edições e volta aos dados originais do slides.json.')) return;
-  clearCustomSlides();
-  closeAdmin();
-  location.reload();
-}
-
-/* ── Micro-helpers ── */
-function getVal(id){
-  const el=document.querySelector(`[data-id="${id}"]`);
-  return el ? el.value : null;
-}
-function escHtml(s){
-  return String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;');
-}
-function fieldInput(id,label,value){
-  return `<div style="margin-bottom:8px;">
-    <label style="font-size:10px;color:#93A0BD;">${label}</label>
-    <input data-id="${id}" value="${escHtml(value)}" style="width:100%;background:#111827;border:1px solid #2a3a52;border-radius:6px;color:#EDEFF5;padding:6px 10px;font-size:13px;">
-  </div>`;
-}
-function smallInput(id,ph,value){
-  return `<input data-id="${id}" value="${escHtml(value)}" placeholder="${ph}" title="${ph}" style="background:#111827;border:1px solid #2a3a52;border-radius:4px;color:#EDEFF5;padding:3px 6px;font-size:11px;">`;
-}
-function smallSelect(id,current){
-  const opts=['green','red','muted'].map(o=>`<option value="${o}"${o===current?' selected':''}>${o}</option>`).join('');
-  return `<select data-id="${id}" style="background:#111827;border:1px solid #2a3a52;border-radius:4px;color:#EDEFF5;padding:3px 4px;font-size:11px;">${opts}</select>`;
-}
-
-/* ── Init ── */
-document.addEventListener('DOMContentLoaded',()=>{ initAdminButton(); });
-
-    if(hVal!==null) slide.heading = hVal;
-
-    // Cover
-    if(slide.type==='cover'){
-      const l1=getVal(`s${si}_line1`), l2=getVal(`s${si}_line2`), l3=getVal(`s${si}_line3`);
-      if(l1!==null) slide.data.line1=l1;
-      if(l2!==null) slide.data.line2=l2;
-      if(l3!==null) slide.data.line3=l3;
-    }
-
-    // KPIs
-    const kpis = slide.data?.kpis || (slide.data?.rows && slide.type==='kpis' ? null : []);
-    if(slide.type==='kpis' && slide.data?.rows){
-      // KPIs em formato rows (flat)
-      let ki=0;
-      slide.data.rows.forEach(row=>{
-        row.forEach(kpi=>{
-          const prefix=`s${si}_k${ki}`;
-          const lbl=getVal(prefix+'_label'), val=getVal(prefix+'_value'), sub=getVal(prefix+'_sub'), st=getVal(prefix+'_status');
-          if(lbl!==null) kpi.label=lbl;
-          if(val!==null) kpi.value=val;
-          if(sub!==null) kpi.sub=sub;
-          if(st!==null) kpi.status=st;
-          ki++;
-        });
-      });
-    } else if(slide.data?.kpis){
-      slide.data.kpis.forEach((kpi,ki)=>{
-        const prefix=`s${si}_k${ki}`;
-        const lbl=getVal(prefix+'_label'), val=getVal(prefix+'_value'), sub=getVal(prefix+'_sub'), st=getVal(prefix+'_status');
-        if(lbl!==null) kpi.label=lbl;
-        if(val!==null) kpi.value=val;
-        if(sub!==null) kpi.sub=sub;
-        if(st!==null) kpi.status=st;
-      });
-    }
-
-    // Table rows
-    if(slide.data?.rows && slide.data?.headers){
-      slide.data.rows.forEach((row,ri)=>{
-        row.forEach((cell,ci)=>{
-          const v=getVal(`s${si}_r${ri}_c${ci}`);
-          if(v!==null) slide.data.rows[ri][ci]=v;
-        });
-      });
-    }
-
-    // Cards
-    if(slide.data?.cards){
-      slide.data.cards.forEach((card,ci)=>{
-        const prefix=`s${si}_card${ci}`;
-        const t=getVal(prefix+'_title');
-        if(t!==null) card.title=t;
-        card.items.forEach((item,ii)=>{
-          const v=getVal(prefix+'_item'+ii);
-          if(v!==null) card.items[ii]=v;
-        });
-      });
-    }
-  });
-
-  saveCustomSlides(slides);
-  closeAdmin();
   showToast('✅ Salvo! Recarregando...');
   setTimeout(()=>location.reload(), 800);
 }
@@ -343,7 +241,7 @@ function resetAdmin(){
   setTimeout(()=>location.reload(), 800);
 }
 
-/* ── Toast notification ── */
+/* ── Toast ── */
 function showToast(msg){
   const t=document.createElement('div');
   t.textContent=msg;
@@ -358,6 +256,13 @@ function showToast(msg){
 }
 
 /* ── Input helpers ── */
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function getVal(id){
+  const el=document.querySelector(`[data-id="${id}"]`);
+  return el ? el.value : null;
+}
 function fieldInput(id,label,value){
   return `<div style="margin-bottom:8px;">
     <label style="font-size:10px;color:#93A0BD;">${label}</label>
@@ -372,13 +277,6 @@ function smallSelect(id,current){
   return `<select data-id="${id}" style="background:#111827;border:1px solid #2a3a52;border-radius:4px;color:#EDEFF5;padding:3px 4px;font-size:11px;">
     ${opts.map(o=>`<option value="${o}"${o===current?' selected':''}>${o==='green'?'🟢 Verde':o==='red'?'🔴 Vermelho':'⚪ Cinza'}</option>`).join('')}
   </select>`;
-}
-function escHtml(s){
-  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-function getVal(id){
-  const el=document.querySelector(`[data-id="${id}"]`);
-  return el ? el.value : null;
 }
 
 /* ── Init ── */
