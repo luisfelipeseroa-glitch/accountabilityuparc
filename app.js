@@ -16,15 +16,13 @@ const IMG = { logo:null, bg1:null, bg2:null };
 fetch('slides.json')
   .then(r => r.json())
   .then(data => {
-    // NOVO: guarda original pra referência do admin
     window.__originalSlides = JSON.parse(JSON.stringify(data));
 
-    // NOVO: usa versão customizada se existir
     const customData = localStorage.getItem('accountability_slides_custom');
     if(customData){
       try{ data = JSON.parse(customData); }catch(e){}
     }
-     
+
     SLIDES = data;
     buildNav();
     go(0);
@@ -127,7 +125,6 @@ const RENDER = {
   },
 
   custom(d, slide){
-    // Acolhimento slide — hardcoded custom layout
     if(slide.title==='Acolhimento'){
       return `
         <div class="kpi-row">
@@ -200,16 +197,19 @@ function go(i){
 
   // Animation
   sl.classList.remove('slide-enter');
-  void sl.offsetWidth; // reflow
+  void sl.offsetWidth;
   sl.classList.add('slide-enter');
 
   // Render content
   const renderer = RENDER[s.type] || RENDER.custom;
   const bodyHTML = renderer(s.data, s);
 
+  // Pill text: usa localStorage ou fallback
+  const pillText = localStorage.getItem('dash_pill') || 'UPA Rocinha';
+
   sl.innerHTML = `
     <div class="diamonds"><svg viewBox="0 0 200 200"><polygon points="100,10 190,100 100,190 10,100" fill="none" stroke="var(--gold)" stroke-width="0.5"/><polygon points="100,40 160,100 100,160 40,100" fill="none" stroke="var(--gold)" stroke-width="0.3"/></svg></div>
-    <div class="brand"><span class="pill" id="brand-pill">${document.getElementById('adm-pill')?document.getElementById('adm-pill').value:'UPA Rocinha'}</span></div>
+    <div class="brand"><span class="pill">${pillText}</span></div>
     <div class="s-head"><div class="eyebrow">${s.eyebrow}</div><h2>${s.heading}</h2></div>
     <div class="s-body">${bodyHTML}</div>
     ${s.source?`<div class="s-source">${s.source}</div>`:''}
@@ -217,7 +217,7 @@ function go(i){
 
   // Logo
   const logoArea = document.getElementById('logo-area');
-  if(IMG.logo){
+  if(logoArea && IMG.logo){
     logoArea.innerHTML = `<img src="${IMG.logo}" alt="Logo">`;
   }
 
@@ -227,19 +227,25 @@ function go(i){
   });
 
   // Progress
-  const pct = ((cur+1)/SLIDES.length*100).toFixed(0);
-  document.getElementById('pbar').style.width = pct+'%';
+  const pbar = document.getElementById('pbar');
+  if(pbar){
+    const pct = ((cur+1)/SLIDES.length*100).toFixed(0);
+    pbar.style.width = pct+'%';
+  }
 
   // Crumb
-  document.getElementById('crumb').innerHTML = `${s.group} › <b>${s.title}</b>`;
+  const crumb = document.getElementById('crumb');
+  if(crumb) crumb.innerHTML = `${s.group} › <b>${s.title}</b>`;
 
   // Counter
   const counter = document.getElementById('slide-counter');
   if(counter) counter.textContent = `${cur+1} / ${SLIDES.length}`;
 
   // Buttons
-  document.getElementById('btnP').disabled = cur===0;
-  document.getElementById('btnN').disabled = cur===SLIDES.length-1;
+  const btnP = document.getElementById('btnP');
+  const btnN = document.getElementById('btnN');
+  if(btnP) btnP.disabled = cur===0;
+  if(btnN) btnN.disabled = cur===SLIDES.length-1;
 
   // Count-up animation for KPI values
   setTimeout(()=>{
@@ -262,7 +268,7 @@ function animateValue(el, start, end, originalText, duration){
   function update(currentTime){
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed/duration, 1);
-    const eased = 1 - Math.pow(1-progress, 3); // ease-out cubic
+    const eased = 1 - Math.pow(1-progress, 3);
     const current = start + (end-start)*eased;
 
     if(progress < 1){
@@ -291,7 +297,7 @@ function prev(){ go(cur-1); }
 // ══════════════════════════════════════
 
 document.addEventListener('keydown', e=>{
-  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT') return;
 
   switch(e.key){
     case 'ArrowRight': case 'ArrowDown': next(); e.preventDefault(); break;
@@ -299,9 +305,8 @@ document.addEventListener('keydown', e=>{
     case 'Escape':
       if(document.body.classList.contains('fullscreen')){
         toggleFullscreen();
-      } else if(document.getElementById('admin-panel').classList.contains('open')){
-        toggleAdmin();
       }
+      // admin.js cuida do fechamento do seu próprio painel
       e.preventDefault();
       break;
     case 'f': case 'F':
@@ -323,12 +328,16 @@ function toggleFullscreen(){
 }
 
 // ══════════════════════════════════════
-// ADMIN PANEL
+// ADMIN PANEL (legado — imagens e textos da sidebar)
+// Funciona com o HTML do painel lateral se existir.
+// O novo admin.js cuida da edição dos indicadores.
 // ══════════════════════════════════════
 
 function toggleAdmin(){
-  document.getElementById('admin-panel').classList.toggle('open');
-  document.getElementById('admin-overlay').classList.toggle('show');
+  const panel = document.getElementById('admin-panel');
+  const overlay = document.getElementById('admin-overlay');
+  if(panel) panel.classList.toggle('open');
+  if(overlay) overlay.classList.toggle('show');
 }
 
 function handleImg(input, prevId, key){
@@ -338,46 +347,63 @@ function handleImg(input, prevId, key){
   reader.onload = e=>{
     IMG[key] = e.target.result;
     const prev = document.getElementById(prevId);
-    prev.src = e.target.result;
-    prev.style.display = 'block';
+    if(prev){
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+    }
   };
   reader.readAsDataURL(file);
 }
 
 function saveAdmin(){
-  // Save images
   ['logo','bg1','bg2'].forEach(k=>{
     if(IMG[k]) localStorage.setItem('dash_img_'+k, IMG[k]);
   });
 
-  // Save text overrides
-  const eyebrow = document.getElementById('adm-eyebrow').value;
-  const title = document.getElementById('adm-title').value;
+  const eyebrowEl = document.getElementById('adm-eyebrow');
+  const titleEl = document.getElementById('adm-title');
+  const pillEl = document.getElementById('adm-pill');
 
-  document.getElementById('side-eyebrow').textContent = eyebrow;
-  document.getElementById('side-title').textContent = title;
+  if(eyebrowEl){
+    const ey = eyebrowEl.value;
+    const sideEy = document.getElementById('side-eyebrow');
+    if(sideEy) sideEy.textContent = ey;
+    localStorage.setItem('dash_eyebrow', ey);
+  }
+  if(titleEl){
+    const ti = titleEl.value;
+    const sideTi = document.getElementById('side-title');
+    if(sideTi) sideTi.textContent = ti;
+    localStorage.setItem('dash_title', ti);
+  }
+  if(pillEl){
+    localStorage.setItem('dash_pill', pillEl.value);
+  }
 
-  localStorage.setItem('dash_eyebrow', eyebrow);
-  localStorage.setItem('dash_title', title);
-  localStorage.setItem('dash_pill', document.getElementById('adm-pill').value);
-
-  // Re-render current slide
   go(cur);
 
-  // Toast
   const toast = document.getElementById('admin-toast');
-  toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'), 2000);
+  if(toast){
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 2000);
+  }
 }
 
 // Restore saved text on load
 (function restoreTexts(){
   const ey = localStorage.getItem('dash_eyebrow');
   const ti = localStorage.getItem('dash_title');
-  if(ey) document.getElementById('adm-eyebrow').value = ey;
-  if(ti) document.getElementById('adm-title').value = ti;
-  if(ey) document.getElementById('side-eyebrow').textContent = ey;
-  if(ti) document.getElementById('side-title').textContent = ti;
   const pi = localStorage.getItem('dash_pill');
-  if(pi) document.getElementById('adm-pill').value = pi;
+
+  const eyEl = document.getElementById('adm-eyebrow');
+  const tiEl = document.getElementById('adm-title');
+  const piEl = document.getElementById('adm-pill');
+  const sideEy = document.getElementById('side-eyebrow');
+  const sideTi = document.getElementById('side-title');
+
+  if(ey && eyEl) eyEl.value = ey;
+  if(ti && tiEl) tiEl.value = ti;
+  if(ey && sideEy) sideEy.textContent = ey;
+  if(ti && sideTi) sideTi.textContent = ti;
+  if(pi && piEl) piEl.value = pi;
 })();
