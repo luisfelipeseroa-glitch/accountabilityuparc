@@ -1,0 +1,411 @@
+[
+  {
+    "group":"Abertura",
+    "title":"Capa",
+    "eyebrow":"Accountability Mensal · 2026",
+    "heading":"Accountability — UPA Rocinha",
+    "type":"cover",
+    "source":"",
+    "data":{
+      "line1":"Accountability 2026",
+      "line2":"UPA Rocinha",
+      "line3":"Resultados · Metas · Plano de Ação"
+    }
+  },
+  {
+    "group":"Abertura",
+    "title":"Quem Somos",
+    "eyebrow":"Institucional",
+    "heading":"Quem Somos",
+    "type":"cards",
+    "source":"Fonte: Plano Operativo 2026",
+    "data":{
+      "columns":2,
+      "cards":[
+        {"title":"Missão","items":["Prestar assistência de urgência e emergência 24h com qualidade, humanização e resolutividade."]},
+        {"title":"Visão","items":["Ser referência em atendimento de urgência na AP 2.1, reconhecida pela excelência clínica e acolhimento."]},
+        {"title":"Valores","items":["Humanização","Ética e Transparência","Eficiência","Trabalho em Equipe","Compromisso com o SUS"]},
+        {"title":"Perfil da Unidade","items":["UPA 24h — Porte III","Localização: Rocinha, Zona Sul – RJ","Atende ~8.000 pacientes/mês"]}
+      ]
+    }
+  },
+  {
+    "group":"Abertura",
+    "title":"Organograma",
+    "eyebrow":"Estrutura",
+    "heading":"Organograma da Unidade",
+    "type":"org",
+    "source":"",
+    "data":{
+      "rows":[
+        [{"role":"Diretor Geral","name":"Dr. Carlos Mendes"}],
+        [{"role":"Dir. Médico","name":"Dra. Ana Costa"},{"role":"Dir. Enfermagem","name":"Enf. Beatriz Lima"},{"role":"Dir. Administrativo","name":"João Ferreira"}],
+        [{"role":"Coord. Acolhimento","name":"Paula Reis"},{"role":"Coord. Farmácia","name":"Ricardo Alves"},{"role":"Coord. Qualidade","name":"Mariana Souza"},{"role":"Coord. RH","name":"Lúcia Ramos"}]
+      ]
+    }
+  },
+  {
+    "group":"Indicadores",
+    "title":"KPIs Assistenciais",
+    "eyebrow":"Performance",
+    "heading":"Indicadores Assistenciais",
+    "type":"kpis",
+    "source":"Fonte: BI Saúde · Competência Mai/2026",
+    "data":{
+      "rows":[
+        [
+          {"label":"Atendimentos/mês","value":"8.247","sub":"▲ 5,2% vs meta","status":"green"},
+          {"label":"Tempo Porta-Médico","value":"18 min","sub":"Meta: ≤ 30 min ✓","status":"green"},
+          {"label":"Taxa Classificação","value":"97,3%","sub":"Meta: ≥ 95% ✓","status":"green"},
+          {"label":"Reinternação 72h","value":"3,1%","sub":"Meta: ≤ 5% ✓","status":"green"}
+        ],
+        [
+          {"label":"Permanência Média","value":"6,4h","sub":"Meta: ≤ 6h ✗","status":"red"},
+          {"label":"Evasão","value":"4,8%","sub":"Meta: ≤ 3% ✗","status":"red"},
+          {"label":"Satisfação NPS","value":"72","sub":"Meta: ≥ 70 ✓","status":"green"},
+          {"label":"Óbitos em sala","value":"0,4%","sub":"Meta: ≤ 1% ✓","status":"green"}
+        ]
+      ]
+    }
+  },
+  {
+    "group":"Indicadores",
+    "title":"Produção Mensal",
+    "eyebrow":"Produção",
+    "heading":"Produção por Serviço — Mai/2026",
+    "type":"table",
+    "source":"Fonte: Sistema de Produção SUS · Mai/2026",
+    "data":{
+      "headers":["Serviço","Atendimentos","Meta","Ating.","Status"],
+      "numCols":[1,2,3],
+      "rows":[
+        ["Clínica Médica","3.412","3.200","106,6%","✓"],
+        ["Pediatria","1.890","1.800","105,0%","✓"],
+        ["Ortopedia","1.020","1.000","102,0%","✓"],
+        ["Sala Vermelha","387","400","96,8%","✗"],
+        ["Suturas/Procedimentos","824","750","109,9%","✓"],
+        ["Nebulização","714","700","102,0%","✓"]
+      ],
+      "statusCol":4
+    }
+  },
+  {
+    "group":"Indicadores",
+    "title":"Financeiro",
+    "eyebrow":"Financeiro",
+    "heading":"Demonstrativo Financeiro — Mai/2026",
+    "type":"kpis+table",
+    "source":"Fonte: Contabilidade/Financeiro · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"Receita Total","value":"R$ 2,4M","sub":"▲ 3% vs abr","status":"green"},
+        {"label":"Custeio","value":"R$ 2,1M","sub":"87,5% da receita","status":"muted"},
+        {"label":"Saldo","value":"R$ 312k","sub":"Positivo ✓","status":"green"}
+      ],
+      "headers":["Rubrica","Valor (R$)","% Receita"],
+      "numCols":[1,2],
+      "rows":[
+        ["Pessoal (CLT+PJ)","1.340.000","55,8%"],
+        ["Insumos/Medicamentos","420.000","17,5%"],
+        ["Serviços Terceirizados","195.000","8,1%"],
+        ["Manutenção/Equipamentos","88.000","3,7%"],
+        ["Outros","57.000","2,4%"]
+      ]
+    }
+  },
+  {
+    "group":"Gestão",
+    "title":"Recursos Humanos",
+    "eyebrow":"RH",
+    "heading":"Quadro de Pessoal & Indicadores RH",
+    "type":"kpis+table",
+    "source":"Fonte: RH/DP · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"Efetivo Total","value":"189","sub":"Meta: 195","status":"muted"},
+        {"label":"Absenteísmo","value":"6,2%","sub":"Meta: ≤ 4% ✗","status":"red"},
+        {"label":"Turnover","value":"2,1%","sub":"Meta: ≤ 3% ✓","status":"green"},
+        {"label":"Horas Extras","value":"1.240h","sub":"▲ 12% vs abr","status":"red"}
+      ],
+      "headers":["Categoria","Previsto","Ativo","Vago"],
+      "numCols":[1,2,3],
+      "rows":[
+        ["Médicos","48","45","3"],
+        ["Enfermeiros","32","31","1"],
+        ["Téc. Enfermagem","64","62","2"],
+        ["Administrativo","28","28","0"],
+        ["Apoio/Higienização","23","23","0"]
+      ]
+    }
+  },
+  {
+    "group":"Gestão",
+    "title":"Qualidade & Segurança",
+    "eyebrow":"Qualidade",
+    "heading":"Indicadores de Qualidade e Segurança",
+    "type":"kpis+cards",
+    "source":"Fonte: NSP · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"Eventos Adversos","value":"3","sub":"Meta: ≤ 5 ✓","status":"green"},
+        {"label":"Quedas","value":"1","sub":"Meta: ≤ 2 ✓","status":"green"},
+        {"label":"Flebite","value":"0,8%","sub":"Meta: ≤ 1% ✓","status":"green"},
+        {"label":"Identificação Pulseira","value":"99,1%","sub":"Meta: ≥ 98% ✓","status":"green"}
+      ],
+      "columns":2,
+      "cards":[
+        {"title":"Protocolos Auditados","items":["Higienização das mãos — 91% adesão","Identificação do paciente — 99,1%","Protocolo de dor — 87% adesão","Cirurgia segura (N/A — UPA)"]},
+        {"title":"Ações do Mês","items":["Treinamento Manchester (reciclagem) — 28 profissionais","Simulação código azul — realizada 15/05","Auditoria interna de prontuários — 120 amostras"]}
+      ]
+    }
+  },
+  {
+    "group":"Gestão",
+    "title":"Acolhimento",
+    "eyebrow":"Acolhimento",
+    "heading":"Classificação de Risco — Manchester",
+    "type":"custom",
+    "source":"Fonte: Painel Acolhimento · Mai/2026",
+    "data":{}
+  },
+  {
+    "group":"Gestão",
+    "title":"Farmácia",
+    "eyebrow":"Farmácia",
+    "heading":"Gestão de Farmácia & Insumos",
+    "type":"kpis+table",
+    "source":"Fonte: Farmácia/CAF · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"Itens em Estoque","value":"342","sub":"Adequado ✓","status":"green"},
+        {"label":"Ruptura de Estoque","value":"2 itens","sub":"Meta: ≤ 5 ✓","status":"green"},
+        {"label":"Descarte por Validade","value":"R$ 1.200","sub":"Meta: ≤ R$ 3k ✓","status":"green"},
+        {"label":"Custo/Atend.","value":"R$ 50,90","sub":"Ref.: R$ 55","status":"muted"}
+      ],
+      "headers":["Medicamento","Consumo","Estoque Atual","Cobertura"],
+      "numCols":[1,2,3],
+      "rows":[
+        ["Dipirona IV","4.200 amp","8.100","58 dias"],
+        ["Soro Fisiológico 500ml","3.800 un","6.200","49 dias"],
+        ["Tramadol IV","680 amp","1.400","62 dias"],
+        ["Amoxicilina 500mg","1.100 cp","2.800","76 dias"]
+      ]
+    }
+  },
+  {
+    "group":"Gestão",
+    "title":"Manutenção",
+    "eyebrow":"Infraestrutura",
+    "heading":"Manutenção & Equipamentos",
+    "type":"kpis+cards",
+    "source":"Fonte: Engenharia Clínica · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"OS Abertas","value":"14","sub":"5 pendentes > 15d","status":"red"},
+        {"label":"OS Concluídas","value":"38","sub":"73% no prazo","status":"green"},
+        {"label":"Equip. Parados","value":"2","sub":"1 Raio-X portátil","status":"red"},
+        {"label":"Preventivas","value":"12/12","sub":"100% ✓","status":"green"}
+      ],
+      "columns":2,
+      "cards":[
+        {"title":"Pendências Críticas","items":["Raio-X portátil — aguardando peça (previsão: 10/06)","Ar-condicionado Sala Amarela — compressor em manutenção"]},
+        {"title":"Investimentos Previstos","items":["Monitor multiparamétrico ×2 — licitação em andamento","Desfibrilador (backup) — entrega jul/2026"]}
+      ]
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Ouvidoria & NPS",
+    "eyebrow":"Ouvidoria",
+    "heading":"Ouvidoria & Pesquisa de Satisfação",
+    "type":"kpis+cards",
+    "source":"Fonte: Ouvidoria · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"NPS Geral","value":"72","sub":"Zona de Qualidade","status":"green"},
+        {"label":"Manifestações","value":"84","sub":"47 elogios · 22 reclamações · 15 sugestões","status":"muted"},
+        {"label":"Tempo Resp. Médio","value":"3,2 dias","sub":"Meta: ≤ 5d ✓","status":"green"}
+      ],
+      "columns":2,
+      "cards":[
+        {"title":"Top Elogios","items":["Equipe de enfermagem — acolhimento humanizado","Rapidez no atendimento pediátrico","Limpeza e organização"]},
+        {"title":"Top Reclamações","items":["Tempo de espera na Sala Verde (pico noturno)","Falta de informação sobre tempo estimado","Climatização inadequada (Sala Amarela)"]}
+      ]
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Plano de Ação",
+    "eyebrow":"Plano de Ação",
+    "heading":"Plano de Ação — Desvios Identificados",
+    "type":"table",
+    "source":"Fonte: Reunião de Gestão · Mai/2026",
+    "data":{
+      "headers":["Problema","Ação","Responsável","Prazo","Status"],
+      "numCols":[],
+      "rows":[
+        ["Permanência > 6h","Protocolo fast-track verde/azul","Dra. Ana Costa","Jul/26","Em andamento"],
+        ["Evasão 4,8%","Painel de tempo estimado na recepção","Paula Reis","Jun/26","Implantando"],
+        ["Absenteísmo 6,2%","Programa de qualidade de vida + banco de horas","Lúcia Ramos","Ago/26","Planejado"],
+        ["Horas extras +12%","Recomposição de 6 vagas","Lúcia Ramos","Jul/26","Seleção aberta"],
+        ["Climatização","Troca compressor Sala Amarela","João Ferreira","Jun/26","Em execução"]
+      ],
+      "statusCol":4
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Metas Contratuais",
+    "eyebrow":"Contrato de Gestão",
+    "heading":"Metas Contratuais — Atingimento",
+    "type":"table",
+    "source":"Fonte: Contrato de Gestão SMS-RJ · Mai/2026",
+    "data":{
+      "headers":["Indicador","Meta","Realizado","Ating.","Status"],
+      "numCols":[2,3],
+      "rows":[
+        ["Atendimentos/mês","≥ 7.500","8.247","109,9%","✓"],
+        ["Classificação ≤ 5 min","≥ 95%","97,3%","102,4%","✓"],
+        ["Tempo porta-médico","≤ 30 min","18 min","—","✓"],
+        ["Permanência média","≤ 6h","6,4h","93,7%","✗"],
+        ["Evasão","≤ 3%","4,8%","—","✗"],
+        ["NPS","≥ 70","72","102,9%","✓"],
+        ["Eventos adversos","≤ 5","3","—","✓"]
+      ],
+      "statusCol":4
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Encerramento",
+    "eyebrow":"Encerramento",
+    "heading":"Próximos Passos & Encerramento",
+    "type":"cards",
+    "source":"",
+    "data":{
+      "columns":2,
+      "cards":[
+        {"title":"Próximos Passos — Jun/2026","items":["Implantar fast-track verde/azul até 30/06","Finalizar troca de compressor Sala Amarela","Concluir seleção das 6 vagas de recomposição","Lançar painel de tempo estimado na recepção","Reunião de acompanhamento: 27/06"]},
+        {"title":"Destaques Positivos","items":["6 de 7 metas contratuais atingidas","NPS na Zona de Qualidade (72)","Zero ruptura crítica de medicamentos","100% das preventivas executadas"]},
+        {"title":"Pontos de Atenção","items":["Permanência média acima da meta (6,4h vs 6h)","Evasão acima do aceitável (4,8% vs 3%)","Absenteísmo elevado (6,2% vs 4%)"]},
+        {"title":"Agradecimentos","items":["Obrigado a toda a equipe da UPA Rocinha pelo empenho e dedicação.","Dúvidas e sugestões: direcao@uparocinha.rio.gov.br"]}
+      ]
+    }
+  }
+]
+":"kpis+table",
+    "source":"Fonte: Farmácia/CAF · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"Itens em Estoque","value":"342","sub":"Adequado ✓","status":"green"},
+        {"label":"Ruptura de Estoque","value":"2 itens","sub":"Meta: ≤ 5 ✓","status":"green"},
+        {"label":"Descarte por Validade","value":"R$ 1.200","sub":"Meta: ≤ R$ 3k ✓","status":"green"},
+        {"label":"Custo/Atend.","value":"R$ 50,90","sub":"Ref.: R$ 55","status":"muted"}
+      ],
+      "headers":["Medicamento","Consumo","Estoque Atual","Cobertura"],
+      "numCols":[1,2,3],
+      "rows":[
+        ["Dipirona IV","4.200 amp","8.100","58 dias"],
+        ["Soro Fisiológico 500ml","3.800 un","6.200","49 dias"],
+        ["Tramadol IV","680 amp","1.400","62 dias"],
+        ["Amoxicilina 500mg","1.100 cp","2.800","76 dias"]
+      ]
+    }
+  },
+  {
+    "group":"Gestão",
+    "title":"Manutenção",
+    "eyebrow":"Infraestrutura",
+    "heading":"Manutenção & Equipamentos",
+    "type":"kpis+cards",
+    "source":"Fonte: Engenharia Clínica · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"OS Abertas","value":"14","sub":"5 pendentes > 15d","status":"red"},
+        {"label":"OS Concluídas","value":"38","sub":"73% no prazo","status":"green"},
+        {"label":"Equip. Parados","value":"2","sub":"1 Raio-X portátil","status":"red"},
+        {"label":"Preventivas","value":"12/12","sub":"100% ✓","status":"green"}
+      ],
+      "columns":2,
+      "cards":[
+        {"title":"Pendências Críticas","items":["Raio-X portátil — aguardando peça (previsão: 10/06)","Ar-condicionado Sala Amarela — compressor em manutenção"]},
+        {"title":"Investimentos Previstos","items":["Monitor multiparamétrico ×2 — licitação em andamento","Desfibrilador (backup) — entrega jul/2026"]}
+      ]
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Ouvidoria & NPS",
+    "eyebrow":"Ouvidoria",
+    "heading":"Ouvidoria & Pesquisa de Satisfação",
+    "type":"kpis+cards",
+    "source":"Fonte: Ouvidoria · Mai/2026",
+    "data":{
+      "kpis":[
+        {"label":"NPS Geral","value":"72","sub":"Zona de Qualidade","status":"green"},
+        {"label":"Manifestações","value":"84","sub":"47 elogios · 22 reclamações · 15 sugestões","status":"muted"},
+        {"label":"Tempo Resp. Médio","value":"3,2 dias","sub":"Meta: ≤ 5d ✓","status":"green"}
+      ],
+      "columns":2,
+      "cards":[
+        {"title":"Top Elogios","items":["Equipe de enfermagem — acolhimento humanizado","Rapidez no atendimento pediátrico","Limpeza e organização"]},
+        {"title":"Top Reclamações","items":["Tempo de espera na Sala Verde (pico noturno)","Falta de informação sobre tempo estimado","Climatização inadequada (Sala Amarela)"]}
+      ]
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Plano de Ação",
+    "eyebrow":"Plano de Ação",
+    "heading":"Plano de Ação — Desvios Identificados",
+    "type":"table",
+    "source":"Fonte: Reunião Gerencial · Mai/2026",
+    "data":{
+      "headers":["Problema","Ação","Responsável","Prazo","Status"],
+      "numCols":[],
+      "rows":[
+        ["Permanência > 6h","Protocolo fast-track verde/azul","Dra. Ana Costa","Jul/26","Em andamento"],
+        ["Evasão 4,8%","Painel tempo de espera + comunicação ativa","Paula Reis","Jun/26","Iniciado"],
+        ["Absenteísmo 6,2%","Programa de qualidade de vida + escala flexível","Lúcia Ramos","Ago/26","Planejado"],
+        ["Horas extras +12%","Revisão de dimensionamento noturno","Lúcia Ramos","Jul/26","Em andamento"],
+        ["Sala Vermelha 96,8%","Treinamento + reclassificação de fluxo","Dra. Ana Costa","Jun/26","Concluído"],
+        ["Climatização","Reparo compressor + contrato preventivo","João Ferreira","Jun/26","Em andamento"]
+      ],
+      "statusCol":4
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Metas Contratuais",
+    "eyebrow":"Contrato",
+    "heading":"Acompanhamento de Metas Contratuais",
+    "type":"table",
+    "source":"Fonte: Contrato de Gestão 2026",
+    "data":{
+      "headers":["Meta","Indicador","Alvo","Realizado","Ating.","Status"],
+      "numCols":[3,4],
+      "rows":[
+        ["Produção mínima","Atendimentos/mês","≥ 7.800","8.247","105,7%","✓"],
+        ["Classificação de risco","% classificados","≥ 95%","97,3%","102,4%","✓"],
+        ["Tempo porta-médico","Minutos","≤ 30","18","Meta ✓","✓"],
+        ["Satisfação","NPS","≥ 70","72","102,9%","✓"],
+        ["Permanência","Horas","≤ 6","6,4","93,8%","✗"],
+        ["Evasão","% evasão","≤ 3%","4,8%","62,5%","✗"]
+      ],
+      "statusCol":5
+    }
+  },
+  {
+    "group":"Resultados",
+    "title":"Encerramento",
+    "eyebrow":"Encerramento",
+    "heading":"Encerramento",
+    "type":"cover",
+    "source":"",
+    "data":{
+      "line1":"Obrigado!",
+      "line2":"Accountability — UPA Rocinha",
+      "line3":"Dúvidas, sugestões e deliberações"
+    }
+  }
+]
