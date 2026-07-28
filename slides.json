@@ -192,7 +192,7 @@
       ]
     }
   },
-  {
+    {
     "group":"Gestão",
     "title":"Manutenção",
     "eyebrow":"Infraestrutura",
@@ -209,7 +209,7 @@
       "columns":2,
       "cards":[
         {"title":"Pendências Críticas","items":["Raio-X portátil — aguardando peça (previsão: 10/06)","Ar-condicionado Sala Amarela — compressor em manutenção"]},
-        {"title":"Investimentos Previstos","items":["Monitor multiparamétrico ×2 — licitação em andamento","Desfibrilador (backup) — entrega jul/2026"]}
+        {"title":"Investimentos Previstos","items":["Monitor multiparamétrico x2 — licitação em andamento","Desfibrilador (backup) — entrega jul/2026"]}
       ]
     }
   },
@@ -239,16 +239,17 @@
     "eyebrow":"Plano de Ação",
     "heading":"Plano de Ação — Desvios Identificados",
     "type":"table",
-    "source":"Fonte: Reunião de Gestão · Mai/2026",
+    "source":"Fonte: Reunião Gerencial · Mai/2026",
     "data":{
       "headers":["Problema","Ação","Responsável","Prazo","Status"],
       "numCols":[],
       "rows":[
         ["Permanência > 6h","Protocolo fast-track verde/azul","Dra. Ana Costa","Jul/26","Em andamento"],
-        ["Evasão 4,8%","Painel de tempo estimado na recepção","Paula Reis","Jun/26","Implantando"],
-        ["Absenteísmo 6,2%","Programa de qualidade de vida + banco de horas","Lúcia Ramos","Ago/26","Planejado"],
-        ["Horas extras +12%","Recomposição de 6 vagas","Lúcia Ramos","Jul/26","Seleção aberta"],
-        ["Climatização","Troca compressor Sala Amarela","João Ferreira","Jun/26","Em execução"]
+        ["Evasão 4,8%","Painel tempo de espera + comunicação ativa","Paula Reis","Jun/26","Iniciado"],
+        ["Absenteísmo 6,2%","Programa de qualidade de vida + escala flexível","Lúcia Ramos","Ago/26","Planejado"],
+        ["Horas extras +12%","Revisão de dimensionamento noturno","Lúcia Ramos","Jul/26","Em andamento"],
+        ["Sala Vermelha 96,8%","Treinamento + reclassificação de fluxo","Dra. Ana Costa","Jun/26","Concluído"],
+        ["Climatização","Reparo compressor + contrato preventivo","João Ferreira","Jun/26","Em andamento"]
       ],
       "statusCol":4
     }
@@ -256,40 +257,35 @@
   {
     "group":"Resultados",
     "title":"Metas Contratuais",
-    "eyebrow":"Contrato de Gestão",
-    "heading":"Metas Contratuais — Atingimento",
+    "eyebrow":"Contrato",
+    "heading":"Acompanhamento de Metas Contratuais",
     "type":"table",
-    "source":"Fonte: Contrato de Gestão SMS-RJ · Mai/2026",
+    "source":"Fonte: Contrato de Gestão 2026",
     "data":{
-      "headers":["Indicador","Meta","Realizado","Ating.","Status"],
-      "numCols":[2,3],
+      "headers":["Meta","Indicador","Alvo","Realizado","Ating.","Status"],
+      "numCols":[3,4],
       "rows":[
-        ["Atendimentos/mês","≥ 7.500","8.247","109,9%","✓"],
-        ["Classificação ≤ 5 min","≥ 95%","97,3%","102,4%","✓"],
-        ["Tempo porta-médico","≤ 30 min","18 min","—","✓"],
-        ["Permanência média","≤ 6h","6,4h","93,7%","✗"],
-        ["Evasão","≤ 3%","4,8%","—","✗"],
-        ["NPS","≥ 70","72","102,9%","✓"],
-        ["Eventos adversos","≤ 5","3","—","✓"]
+        ["Produção mínima","Atendimentos/mês","≥ 7.800","8.247","105,7%","✓"],
+        ["Classificação de risco","% classificados","≥ 95%","97,3%","102,4%","✓"],
+        ["Tempo porta-médico","Minutos","≤ 30","18","Meta ✓","✓"],
+        ["Satisfação","NPS","≥ 70","72","102,9%","✓"],
+        ["Permanência","Horas","≤ 6","6,4","93,8%","✗"],
+        ["Evasão","% evasão","≤ 3%","4,8%","62,5%","✗"]
       ],
-      "statusCol":4
+      "statusCol":5
     }
   },
   {
     "group":"Resultados",
     "title":"Encerramento",
     "eyebrow":"Encerramento",
-    "heading":"Próximos Passos & Encerramento",
-    "type":"cards",
+    "heading":"Encerramento",
+    "type":"cover",
     "source":"",
     "data":{
-      "columns":2,
-      "cards":[
-        {"title":"Próximos Passos — Jun/2026","items":["Implantar fast-track verde/azul até 30/06","Finalizar troca de compressor Sala Amarela","Concluir seleção das 6 vagas de recomposição","Lançar painel de tempo estimado na recepção","Reunião de acompanhamento: 27/06"]},
-        {"title":"Destaques Positivos","items":["6 de 7 metas contratuais atingidas","NPS na Zona de Qualidade (72)","Zero ruptura crítica de medicamentos","100% das preventivas executadas"]},
-        {"title":"Pontos de Atenção","items":["Permanência média acima da meta (6,4h vs 6h)","Evasão acima do aceitável (4,8% vs 3%)","Absenteísmo elevado (6,2% vs 4%)"]},
-        {"title":"Agradecimentos","items":["Obrigado a toda a equipe da UPA Rocinha pelo empenho e dedicação.","Dúvidas e sugestões: direcao@uparocinha.rio.gov.br"]}
-      ]
+      "line1":"Obrigado!",
+      "line2":"Accountability — UPA Rocinha",
+      "line3":"Dúvidas, sugestões e deliberações"
     }
   }
 ]
